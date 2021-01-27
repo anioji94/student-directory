@@ -9,5 +9,5 @@ in Villains Academy
 ruby directory.rb
 ```
 
-*whattup* 
+
 
