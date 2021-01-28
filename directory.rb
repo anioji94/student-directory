@@ -5,18 +5,23 @@ def interactive_menu
   loop do
     print_menu
     selection = gets.chomp
-        case selection
-        when "1"
-          input_students
-        when "2"
-            show_students
-        when "9"
-          exit # this will cause the program to terminate
-        else
-          puts "I don't know what you meant, try again"
-        end
+    process(selection)
   end
 end
+
+def process(selection)
+  case selection
+    when "1"
+      input_students
+    when "2"
+      show_students
+    when "9"
+      exit # this will cause the program to terminate
+    else
+      puts "I don't know what you meant, try again"
+  end
+end
+
 
 def input_students
     puts "Please enter the names of the students"
@@ -25,12 +30,16 @@ def input_students
     # get first name
     name = gets.chomp
     # type "end" to close the list.
+    puts "What cohort do they belong to?"
+    cohort = gets.chomp
     while !name.empty? do 
-        @students << {name: name, cohort: :nov}
+        @students << {name: name, cohort: cohort.to_sym}
         puts "Now we have #{@students.count} students"
         # get another name from the user
         puts "Would you like to add more?"
         name = gets.chomp
+        puts "What cohort do they belong to?"
+        cohort = gets.chomp
     end
     # return array of students
 end
